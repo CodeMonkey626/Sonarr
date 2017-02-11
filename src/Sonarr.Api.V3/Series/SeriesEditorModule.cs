@@ -52,11 +52,11 @@ namespace Sonarr.Api.V3.Series
 
         private Response DeleteSeries()
         {
-            var resource = Request.Body.FromJson<SeriesEditorDeleteResource>();
+            var resource = Request.Body.FromJson<SeriesEditorResource>();
 
             foreach (var seriesId in resource.SeriesIds)
             {
-                _seriesService.DeleteSeries(seriesId, resource.DeleteFiles);
+                _seriesService.DeleteSeries(seriesId, false);
             }
 
             return new object().AsResponse();

@@ -104,11 +104,16 @@ namespace Sonarr.Http.Authentication
 
             var formsAuthCookieName = FormsAuthentication.FormsAuthenticationCookieName;
 
-            if (context.Request.Cookies.ContainsKey(formsAuthCookieName))
+            if (!context.Request.Path.Equals("/logout") &&
+                context.Request.Cookies.ContainsKey(formsAuthCookieName))
             {
-                var formsAuthCookie = context.Request.Cookies[formsAuthCookieName];
+                var formsAuthCookieValue = context.Request.Cookies[formsAuthCookieName];
+                var formsAuthCookie = new NancyCookie(formsAuthCookieName, formsAuthCookieValue, true, false, DateTime.UtcNow.AddDays(7))
+                {
+                    Path = _configFileProvider.UrlBase
+                };
 
-                context.Response.WithCookie(new NancyCookie(formsAuthCookieName, formsAuthCookie, true, false, DateTime.UtcNow.AddDays(7)));
+                context.Response.WithCookie(formsAuthCookie);
             }
         }
     }
