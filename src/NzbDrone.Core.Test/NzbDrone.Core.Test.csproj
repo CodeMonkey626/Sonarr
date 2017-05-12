@@ -178,6 +178,7 @@
     <Compile Include="Download\DownloadClientTests\DownloadStationTests\SharedFolderResolverFixture.cs" />
     <Compile Include="Download\DownloadClientTests\DownloadStationTests\UsenetDownloadStationFixture.cs" />
     <Compile Include="Download\DownloadClientTests\HadoukenTests\HadoukenFixture.cs" />
+    <Compile Include="Download\DownloadClientTests\DownloadClientStatusServiceFixture.cs" />
     <Compile Include="Download\DownloadClientTests\NzbgetTests\NzbgetFixture.cs" />
     <Compile Include="Download\DownloadClientTests\NzbVortexTests\NzbVortexFixture.cs" />
     <Compile Include="Download\DownloadClientTests\PneumaticProviderFixture.cs" />
