@@ -21,7 +21,7 @@ namespace NzbDrone.Core.Indexers
         public IndexerFactory(IIndexerStatusService indexerStatusService,
                               IIndexerRepository providerRepository,
                               IEnumerable<IIndexer> providers,
-                              IContainer container, 
+                              IContainer container,
                               IEventAggregator eventAggregator,
                               Logger logger)
             : base(providerRepository, providers, container, eventAggregator, logger)
@@ -70,7 +70,7 @@ namespace NzbDrone.Core.Indexers
 
         private IEnumerable<IIndexer> FilterBlockedIndexers(IEnumerable<IIndexer> indexers)
         {
-            var blockedIndexers = _indexerStatusService.GetBlockedIndexers().ToDictionary(v => v.ProviderId, v => v);
+            var blockedIndexers = _indexerStatusService.GetBlockedProviders().ToDictionary(v => v.ProviderId, v => v);
 
             foreach (var indexer in indexers)
             {
